@@ -1,0 +1,235 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(#0f172a, #020617);
+  font-family: system-ui, sans-serif;
+  color: #e5e7eb;
+}
+
+/* Escena */
+.scene {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor de vinilos */
+.vinyls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 35px;
+  width: 90%;
+  max-width: 900px;
+}
+
+/* Tarjeta */
+.vinyl-card {
+  width: 150px;
+  height: 150px;
+  perspective: 1000px;
+  justify-self: center;
+}
+
+.vinyl-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+
+.vinyl-card:hover .vinyl-inner {
+  transform: rotateY(180deg);
+}
+
+.vinyl-front,
+.vinyl-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Vinilo */
+.vinyl-front {
+  background: radial-gradient(circle at center, #444 0%, #111 35%, #000 60%, #111 100%);
+  box-shadow:
+    inset 0 0 15px rgba(255,255,255,0.1),
+    0 8px 18px rgba(0,0,0,0.5);
+  animation: spin 8s linear infinite;
+}
+
+/* Etiqueta central */
+.vinyl-front .label {
+  width: 32px;
+  height: 32px;
+  background: radial-gradient(circle, #a8ffd8, #1b6b4f);
+  border-radius: 50%;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.6);
+}
+
+/* Parte trasera */
+.vinyl-back {
+  background: #142420;
+  color: #caffdf;
+  transform: rotateY(180deg);
+  flex-direction: column;
+  padding: 16px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.vinyl-back a {
+  margin-top: 6px;
+  color: #8affc1;
+  text-decoration: none;
+}
+
+.vinyl-back a:hover {
+  text-decoration: underline;
+}
+
+/* Animación */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* luciernagas */
+
+/* Luciérnagas mejoradas */
+.fireflies {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fireflies span {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgb(255, 230, 130), rgba(255, 214, 48, 0.2), transparent);
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: float 14s ease-in-out infinite;
+  opacity: 0;
+}
+
+/* Posiciones + tiempos variados */
+.fireflies span:nth-child(1) { left: 5%;  animation-delay: 0s; }
+.fireflies span:nth-child(2) { left: 15%; animation-delay: 2s; }
+.fireflies span:nth-child(3) { left: 25%; animation-delay: 5s; }
+.fireflies span:nth-child(4) { left: 35%; animation-delay: 1s; }
+.fireflies span:nth-child(5) { left: 45%; animation-delay: 4s; }
+.fireflies span:nth-child(6) { left: 55%; animation-delay: 7s; }
+.fireflies span:nth-child(7) { left: 65%; animation-delay: 3s; }
+.fireflies span:nth-child(8) { left: 75%; animation-delay: 6s; }
+.fireflies span:nth-child(9) { left: 85%; animation-delay: 2s; }
+.fireflies span:nth-child(10){ left: 95%; animation-delay: 8s; }
+
+@keyframes float {
+  0%   { transform: translate(0,110vh) scale(0.4); opacity: 0; }
+  20%  { opacity: 1; }
+  50%  { transform: translate(30px,50vh) scale(1); }
+  80%  { opacity: 0.9; }
+  100% { transform: translate(-20px,-20vh) scale(0.2); opacity: 0; }
+}
+
+
+
+.scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(120,255,200,0.08), transparent 60%);
+  pointer-events: none;
+}
+
+.vinyl-card {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+/* @keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+} */
+
+/* texto */
+
+.intro {
+  position: absolute;
+  top: 40px;
+  font-size: 1rem;
+  opacity: 0.85;
+  letter-spacing: 0.05em;
+}
+
+/* esstrellas */
+
+.star-dust {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.star-dust::before,
+.star-dust::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  box-shadow:
+    10vw 20vh rgba(255,255,255,0.8),
+    30vw 40vh rgba(255,255,255,0.6),
+    50vw 15vh rgba(255,255,255,0.7),
+    70vw 30vh rgba(255,255,255,0.9),
+    85vw 60vh rgba(255,255,255,0.5),
+    15vw 70vh rgba(255,255,255,0.6),
+    40vw 80vh rgba(255,255,255,0.7),
+    65vw 55vh rgba(255,255,255,0.8),
+    90vw 25vh rgba(255,255,255,0.6),
+    20vw 50vh rgba(255,255,255,0.7);
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  animation: twinkle 5s ease-in-out infinite alternate;
+  filter: blur(0.3px);
+}
+
+.star-dust::after {
+  box-shadow:
+    5vw 15vh rgba(255,255,255,0.4),
+    25vw 35vh rgba(255,255,255,0.6),
+    45vw 10vh rgba(255,255,255,0.5),
+    60vw 25vh rgba(255,255,255,0.7),
+    75vw 50vh rgba(255,255,255,0.4),
+    35vw 65vh rgba(255,255,255,0.5),
+    55vw 75vh rgba(255,255,255,0.6),
+    80vw 20vh rgba(255,255,255,0.5);
+  animation-delay: 3s;
+  opacity: 0.6;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to   { opacity: 1; }
+}
+
+.scene {
+  position: relative;
+  overflow: hidden;
+}
